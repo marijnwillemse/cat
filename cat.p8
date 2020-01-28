@@ -14,7 +14,8 @@ function _draw()
  spr(1,p.x*8,p.y*8)
 end
 -->8
-entity = {x=1, y=1}
+entity = {x=1,  y=1,
+          dx=0, dy=0, d=1}
 
 function entity:new(o)
  o=o or {} --create if null
@@ -26,12 +27,19 @@ end
 cat=entity:new()
 
 function cat:update()
- if btnp(⬆️) then self.y-=1 end
- if btnp(⬇️) then self.y+=1 end
- if btnp(⬅️) then self.x-=1 end
- if btnp(➡️) then self.x+=1 end
+ if btnp(⬆️) then self.dy-=1 end
+ if btnp(⬇️) then self.dy+=1 end
+ if btnp(⬅️) then self.dx-=1 end
+ if btnp(➡️) then self.dx+=1 end
+ self:move()
 end
 
+function cat:move()
+ self.y+=self.dy
+ self.x+=self.dx
+ self.dy=0
+ self.dx=0 
+end
 __gfx__
 00000000888888880000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00000000088808080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
