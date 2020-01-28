@@ -17,6 +17,7 @@ end
 entity = {x=1,  y=1,
           dx=0, dy=0, d=1}
 
+
 function entity:new(o)
  o=o or {} --create if null
  setmetatable(o, self)
